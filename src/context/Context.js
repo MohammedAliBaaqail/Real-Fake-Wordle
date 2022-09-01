@@ -32,10 +32,10 @@ export const ContextProvider = ({ children }) => {
 
         React.useEffect(() => {
           localStorage.setItem('light-text', themeInvText);
-        }, [theme]);
+        }, [themeInvText]);
         React.useEffect(() => {
           localStorage.setItem('light-border', themeInvBorder);
-        }, [theme]);
+        }, [themeInvBorder]);
 
 
       const toggleTheme = () => {
