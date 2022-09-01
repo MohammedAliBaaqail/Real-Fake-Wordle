@@ -6,7 +6,7 @@ import Grid from './Grid'
 import Keypad from './Keypad'
 import End from './End'
 
-export default function Wordle({ solution }) {
+export default function Wordle({ solution  , themeInv }) {
   const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup } = useWordle(solution)
   const [showEnd, setShowEnd] = useState(false)
   
@@ -28,7 +28,7 @@ export default function Wordle({ solution }) {
   return (
     <div>
       <Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
-      <Keypad usedKeys={usedKeys} />
+      <Keypad usedKeys={usedKeys} themeInv={themeInv} />
       {showEnd && <End isCorrect={isCorrect} turn={turn} solution={solution} />}
     </div>
   )

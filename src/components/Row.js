@@ -1,6 +1,13 @@
-import React from 'react'
+
+import React, { useContext } from "react";
+import { Context } from "../context/Context";
+
+
+
 
 export default function Row({ guess, currentGuess }) {
+  
+  const { themeInvText,themeInvBorder  } = useContext(Context);
 
   if (guess) {
     return (
@@ -18,7 +25,7 @@ export default function Row({ guess, currentGuess }) {
     return (
       <div className="row current">
         {letters.map((letter, i) => (
-          <div key={i} className="filled">{letter}</div>
+          <div key={i} className={`${themeInvText} ${themeInvBorder} filled`}>{letter}</div>
         ))}
         {[...Array(5 - letters.length)].map((_,i) => (
           <div key={i}></div>

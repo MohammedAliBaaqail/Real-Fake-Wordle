@@ -1,24 +1,29 @@
 import { useEffect, useState } from 'react'
+import ReactSwitch from "react-switch";
 import Wordle from './components/Wordle'
 
+import React, { useContext } from "react";
+import { Context } from "./context/Context";
+import Main from './components/main';
+
 function App() {
-  const [solution, setSolution] = useState(null)
+
+  // const [theme, setTheme] = useState("light");
+  // const [themeInv, setThemeInv] = useState("light");
+
+  // const toggleTheme = () => {
+  //   setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  //   setThemeInv((curr) => (theme === "light" ? "light-text" : "dark-text"));
+  // };
+
   
-  useEffect(() => {
-    fetch('http://localhost:3001/solutions')
-      .then(res => res.json())
-      .then(json => {
-        // random int between 0 & 14
-        const randomSolution = json[Math.floor(Math.random()*json.length)]
-        setSolution(randomSolution.word)
-      })
-  }, [setSolution])
+
+
+ 
+
 
   return (
-    <div className="App">
-      <h1>Real Fake Wordle </h1>
-      {solution && <Wordle solution={solution} />}
-    </div>
+   <Main/>
   )
 }
 
