@@ -11,7 +11,7 @@ export default function Row({ guess, currentGuess }) {
 
   if (guess) {
     return (
-      <div className="row past">
+      <div  className={`  ${themeInvBorder} row past`}>
         {guess.map((l, i) => (
           <div key={i} className={l.color}>{l.key}</div>
         ))}
@@ -30,7 +30,7 @@ export default function Row({ guess, currentGuess }) {
           <div key={i} className={`${themeInvText} ${themeInvBorder} filled`}>{letter}</div>
         ))}
         {[...Array(5 - letters.length)].map((_,i) => (
-          <div key={i}></div>
+          <div className={themeInvText} key={i}></div>
         ))}
       </div>
     )

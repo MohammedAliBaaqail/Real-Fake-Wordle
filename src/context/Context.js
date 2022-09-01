@@ -11,6 +11,8 @@ export const ContextProvider = ({ children }) => {
     const [themeInvText, setThemeInvText] = useState(localStorage.getItem('dark-text') );
     const [themeInvBorder, setThemeInvBorder] = useState(localStorage.getItem('dark-border') );
     const [solution, setSolution] = useState(null)
+    const [type, setType] = useState(null)
+    const [definition, setDefinition] = useState(null)
 
 
     useEffect(() => {
@@ -20,6 +22,8 @@ export const ContextProvider = ({ children }) => {
             // random int between 0 & 14
             const randomSolution = json[Math.floor(Math.random()*json.length)]
             setSolution(randomSolution.word.toLowerCase())
+            setType(randomSolution.type.toLowerCase())
+            setDefinition(randomSolution.definition.toLowerCase())
           })
       }, [setSolution])
 
@@ -47,7 +51,7 @@ export const ContextProvider = ({ children }) => {
 
   
     return (
-        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder}}>
+        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder,type,definition}}>
             {children}
         </Context.Provider>
     );

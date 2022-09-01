@@ -11,7 +11,7 @@ export default function End({ isCorrect, solution, turn }) {
           <h1>You Won!</h1>
           <p className="solution">{solution} Is correct!</p>
           <p>You found the solution in {turn} guesses :)</p>
-          <button onClick={() => window.location.reload(false)}>Click to reload!</button>
+          <button className='button' onClick={() => window.location.reload(false)}>Click to reload!</button>
         </div>
       )}
       {!isCorrect && (

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext } from 'react'
+import { Context } from "../context/Context";
 import useWordle from '../hooks/useWordle'
 
 // components
@@ -6,9 +7,10 @@ import Grid from './Grid'
 import Keypad from './Keypad'
 import End from './End'
 
-export default function Wordle({ solution  , themeInv }) {
-  const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup } = useWordle(solution)
-  const [showEnd, setShowEnd] = useState(false)
+export default function Wordle({solution}) {
+  const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup, } = useWordle(solution);
+  const { themeInvText   , themeInv } = useContext(Context);
+  const [showEnd, setShowEnd] = useState(false);
   
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
