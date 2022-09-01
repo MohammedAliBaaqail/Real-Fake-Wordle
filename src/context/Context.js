@@ -28,7 +28,7 @@ export const ContextProvider = ({ children }) => {
       
         React.useEffect(() => {
           localStorage.setItem('light', theme);
-        }, [theme]);
+        }, [theme,setSolution]);
 
         React.useEffect(() => {
           localStorage.setItem('dark-text', themeInvText);
