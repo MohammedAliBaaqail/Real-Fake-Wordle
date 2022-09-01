@@ -9,18 +9,18 @@ import End from './End'
 
 export default function Wordle({solution}) {
   const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup, } = useWordle(solution);
-  const { themeInvText   , themeInv } = useContext(Context);
+  const {     themeInv } = useContext(Context);
   const [showEnd, setShowEnd] = useState(false);
   
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
 
     if (isCorrect) {
-      setTimeout(() => setShowEnd(true), 2000)
+      setTimeout(() => setShowEnd(true), 1000)
       window.removeEventListener('keyup', handleKeyup)
     }
     if (turn > 5) {
-      setTimeout(() => setShowEnd(true), 2000)
+      setTimeout(() => setShowEnd(true), 1000)
       window.removeEventListener('keyup', handleKeyup)
     }
 
