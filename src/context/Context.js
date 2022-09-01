@@ -7,7 +7,7 @@ export const Context = React.createContext();
 export const ContextProvider = ({ children }) => {
 
   
-    const [theme, setTheme] = useState(localStorage.getItem('dark') );
+    const [theme, setTheme] = useState(localStorage.getItem('light') );
     const [themeInvText, setThemeInvText] = useState(localStorage.getItem('light-text') );
     const [themeInvBorder, setThemeInvBorder] = useState(localStorage.getItem('light-border') );
     const [solution, setSolution] = useState(null)
@@ -27,7 +27,7 @@ export const ContextProvider = ({ children }) => {
  
       
         React.useEffect(() => {
-          localStorage.setItem('dark', theme);
+          localStorage.setItem('light', theme);
         }, [theme]);
 
         React.useEffect(() => {
