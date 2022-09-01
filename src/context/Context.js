@@ -8,8 +8,8 @@ export const ContextProvider = ({ children }) => {
 
   
     const [theme, setTheme] = useState(localStorage.getItem('light') );
-    const [themeInvText, setThemeInvText] = useState(localStorage.getItem('light-text') );
-    const [themeInvBorder, setThemeInvBorder] = useState(localStorage.getItem('light-border') );
+    const [themeInvText, setThemeInvText] = useState(localStorage.getItem('dark-text') );
+    const [themeInvBorder, setThemeInvBorder] = useState(localStorage.getItem('dark-border') );
     const [solution, setSolution] = useState(null)
 
 
@@ -31,10 +31,10 @@ export const ContextProvider = ({ children }) => {
         }, [theme]);
 
         React.useEffect(() => {
-          localStorage.setItem('light-text', themeInvText);
+          localStorage.setItem('dark-text', themeInvText);
         }, [themeInvText]);
         React.useEffect(() => {
-          localStorage.setItem('light-border', themeInvBorder);
+          localStorage.setItem('dark-border', themeInvBorder);
         }, [themeInvBorder]);
 
 
