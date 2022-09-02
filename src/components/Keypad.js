@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import  { useContext } from "react";
+import { Context } from "../context/Context";
 
 export default function Keypad({ usedKeys  }) {
-  const [letters, setLetters] = useState(null)
 
-  useEffect(() => {
-    fetch('https://plant-fluffy-basilisk.glitch.me/letters')
-      .then(res => res.json())
-      .then(json => {
-        setLetters(json)
-      })
-  }, [])
+  const { letters } = useContext(Context);
+
 
   return (
     <div className="keypad">

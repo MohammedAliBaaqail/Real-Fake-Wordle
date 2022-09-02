@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
     const [solution, setSolution] = useState(null)
     const [type, setType] = useState(null)
     const [definition, setDefinition] = useState(null)
+    const [letters, setLetters] = useState(null)
 
 
     useEffect(() => {
@@ -24,7 +25,11 @@ export const ContextProvider = ({ children }) => {
               setType(randomSolution.type.toLowerCase())
               setDefinition(randomSolution.definition.toLowerCase())
             })
-          
+            fetch('https://plant-fluffy-basilisk.glitch.me/letters')
+            .then(res => res.json())
+            .then(json => {
+              setLetters(json)
+            })
 
       }, [setSolution])
 
@@ -33,7 +38,7 @@ export const ContextProvider = ({ children }) => {
       
         React.useEffect(() => {
           localStorage.setItem('light', theme);
-        }, [theme,setSolution]);
+        }, [theme]);
 
         React.useEffect(() => {
           localStorage.setItem('dark-text', themeInvText);
@@ -52,7 +57,7 @@ export const ContextProvider = ({ children }) => {
 
   
     return (
-        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder,type,definition}}>
+        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder,type,definition,letters}}>
             {children}
         </Context.Provider>
     );
