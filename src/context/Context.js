@@ -16,15 +16,16 @@ export const ContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/solutions')
+        fetch('https://plant-fluffy-basilisk.glitch.me/solutions')
           .then(res => res.json())
-          .then(json => {
-            // random int between 0 & 14
-            const randomSolution = json[Math.floor(Math.random()*json.length)]
-            setSolution(randomSolution.word.toLowerCase())
-            setType(randomSolution.type.toLowerCase())
-            setDefinition(randomSolution.definition.toLowerCase())
-          })
+            .then(json => {
+              const randomSolution = json[Math.floor(Math.random()*json.length)]
+              setSolution(randomSolution.word.toLowerCase())
+              setType(randomSolution.type.toLowerCase())
+              setDefinition(randomSolution.definition.toLowerCase())
+            })
+          
+
       }, [setSolution])
 
 
