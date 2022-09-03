@@ -17,7 +17,8 @@ export const ContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('https://plant-fluffy-basilisk.glitch.me/solutions')
+        fetch('https://json-server-real-fake-wordle.herokuapp.com/solutions')
+        // fetch('https://plant-fluffy-basilisk.glitch.me/solutions')
           .then(res => res.json())
             .then(json => {
               const randomSolution = json[Math.floor(Math.random()*json.length)]
@@ -25,13 +26,14 @@ export const ContextProvider = ({ children }) => {
               setType(randomSolution.type.toLowerCase())
               setDefinition(randomSolution.definition.toLowerCase())
             })
-            fetch('https://plant-fluffy-basilisk.glitch.me/letters')
+            fetch('https://json-server-real-fake-wordle.herokuapp.com/letters')
+            // fetch('https://plant-fluffy-basilisk.glitch.me/letters')
             .then(res => res.json())
             .then(json => {
               setLetters(json)
             })
-
-      }, [setSolution])
+              console.log('fetching')
+      }, [])
 
 
  
