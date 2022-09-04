@@ -1,6 +1,7 @@
 
 import React, { useState  , useEffect} from "react";
 
+import solutions from './db-easy'
 
 export const Context = React.createContext();
 
@@ -13,26 +14,21 @@ export const ContextProvider = ({ children }) => {
     const [solution, setSolution] = useState(null)
     const [type, setType] = useState(null)
     const [definition, setDefinition] = useState(null)
-    const [letters, setLetters] = useState(null)
+
 
 
     useEffect(() => {
-        fetch('https://json-server-real-fake-wordle.herokuapp.com/solutions')
+        // fetch('https://json-server-real-fake-wordle.herokuapp.com/solutions')
         // fetch('https://plant-fluffy-basilisk.glitch.me/solutions')
-          .then(res => res.json())
-            .then(json => {
-              const randomSolution = json[Math.floor(Math.random()*json.length)]
+          // .then(res => res.json())
+          //   .then(json => {
+              const randomSolution = solutions[Math.floor(Math.random()*solutions.length)]
               setSolution(randomSolution.word.toLowerCase())
               setType(randomSolution.type.toLowerCase())
               setDefinition(randomSolution.definition.toLowerCase())
-            })
-            fetch('https://json-server-real-fake-wordle.herokuapp.com/letters')
-            // fetch('https://plant-fluffy-basilisk.glitch.me/letters')
-            .then(res => res.json())
-            .then(json => {
-              setLetters(json)
-            })
-              console.log('fetching')
+            // })
+         
+              
       }, [])
 
 
@@ -59,7 +55,7 @@ export const ContextProvider = ({ children }) => {
 
   
     return (
-        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder,type,definition,letters}}>
+        <Context.Provider value={{ theme, setTheme ,themeInvText, setThemeInvText,toggleTheme ,solution ,themeInvBorder,type,definition}}>
             {children}
         </Context.Provider>
     );
